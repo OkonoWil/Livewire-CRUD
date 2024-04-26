@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\ListTodos;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -12,4 +13,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+
+Route::get('todos' , ListTodos::class)->middleware('auth')->name('todos.index');
+
+require __DIR__ . '/auth.php';
