@@ -21,7 +21,7 @@ class Create extends Component
     public function create()
     {
         $this->form->create();
-
+        $this->reset(['form.name', 'form.description']);
         $this->success = 'Todo created successfully.';
 
         $this->dispatch('todo:created');
