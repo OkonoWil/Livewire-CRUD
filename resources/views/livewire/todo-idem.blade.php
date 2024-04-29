@@ -3,7 +3,7 @@
     <td class="w-1/4 text-center border-r">{{$todo->user?->name}}</td>
     <td class="flex justify-center w-1/4 border-r">
         @if ($todo->completed)
-            <svg class="w-10 h-10" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <svg wire:click='toggle' class="w-10 h-10 cursor-pointer" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                 <g id="SVGRepo_iconCarrier">
@@ -13,7 +13,7 @@
                 </g>
             </svg>
         @else
-            <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg wire:click='toggle' class="w-10 h-10 cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                 <g id="SVGRepo_iconCarrier">
@@ -25,7 +25,7 @@
         @endif
     </td>
     <td class="w-1/4 text-center">
-        <button class="p-2 ml-3 text-white bg-green-400 rounded-lg">Edit</button>
-        <button class="p-2 mr-3 text-white bg-red-400 rounded-lg">Delete</button>
+        <a  class="p-2 ml-3 text-white bg-green-400 rounded-lg cursor-pointer" href="{{route('todos.edit', $todo)}}" wire:navigate>Edit</a>
+        <button class="p-2 mr-3 text-white bg-red-400 rounded-lg" wire:click="deleteTodo({{$todo}})">Delete</button>
     </td>
 </tr>

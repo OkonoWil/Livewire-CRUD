@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Livewire\Forms\TodoForm;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Create extends Component
@@ -29,5 +30,11 @@ class Create extends Component
     public function removeSuccess()
     {
         unset($this->success);
+    }
+
+    #[On(['todo:deleted'])]
+    public function addSuccess(string $message)
+    {
+        $this->success = $message;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Todo;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
@@ -21,6 +22,7 @@ class ListTodos extends Component
     {
         $this->todos = auth()->user()->todos()->latest()->get();
     }
+
 
     #[Title('Todo List')]
     public function render()
